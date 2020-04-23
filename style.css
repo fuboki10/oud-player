@@ -117,4 +117,14 @@ body{
   transform: scale(2);
 }
 
+#duration{
+  margin-left: -13%;
+  margin-top: -2%;
+  position: fixed;
+}
 
+#total-duration{
+  margin-left: 75%;
+  margin-top: -2%;
+  position: fixed;
+}

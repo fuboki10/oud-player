@@ -24,6 +24,24 @@ function pre() {
   goPrevious();
 };
 
+function secondsToTime(seconds) {
+  var minutes = Math.floor(seconds / 60);
+  var seconds = ((seconds % 60)).toFixed(0);
+  return `${minutes}:${(seconds < 10 ? '0' : '')}${seconds}`;
+}
+
+song.addEventListener('timeupdate', function () {
+
+  var position = song.currentTime / song.duration;
+
+  $("#fill")[0].style.width = position * 100 + '%';
+  $("#duration")[0].innerHTML = secondsToTime(song.currentTime);
+});
+
+song.addEventListener('canplaythrough', function () {
+  $("#total-duration")[0].innerHTML = secondsToTime(song.duration);
+});
+
 const getPlayer = () => {
   axios.get('https://oud-zerobase.me/api/v1/me/player')
     .then(res => {
