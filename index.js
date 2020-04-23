@@ -42,6 +42,8 @@ song.addEventListener('canplaythrough', function () {
   $("#total-duration")[0].innerHTML = secondsToTime(song.duration);
 });
 
+song.addEventListener("ended", next);
+
 const getPlayer = () => {
   axios.get('https://oud-zerobase.me/api/v1/me/player')
     .then(res => {
