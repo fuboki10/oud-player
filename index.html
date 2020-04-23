@@ -10,36 +10,34 @@
 </head>
 
 <body>
-  <audio id="player" src="#" controls autoplay>
 
-  </audio>
-
-  <p id="song-name">Song Name</p>
-  <img id="song-img" src="#" width="300" height="300">
-
-  <br>
-
-  <button id="play-btn" class="btn">
-    Play
-  </button>
-
-  <button id="pause-btn" class="btn">
-    Pause
-  </button>
-
-  <button id="next-btn" class="btn">
-    Next
-  </button>
-
-  <button id="previous-btn" class="btn">
-    Previous
-  </button>
-
-  <div id="queue" class="queue">
-    <ul id="queue-list">
-
-    </ul>
+  <div id="bg">
+    <div id="backLayer"></div>
+    <img src="https://user-images.githubusercontent.com/35429211/76151624-b3377e80-60bf-11ea-94e5-d55c9a515dc1.png"
+      alt="Backgroud">
   </div>
+
+  <div id="main">
+    <div id="image">
+      <img src="https://user-images.githubusercontent.com/35429211/76151624-b3377e80-60bf-11ea-94e5-d55c9a515dc1.png">
+    </div>
+    <div id="player">
+      <div id="songTitle">Demo</div>
+      <div id="buttons">
+        <button id="pre" onclick="pre()">
+          <button id="pre" onclick="pre()"><img src="Pre.png" height="90%" width="90%" /></button>
+          <button id="play" onclick="playOrPauseSong()"><img src="Play.png" /></button>
+          <button id="next" onclick="next()"><img src="Next.png" height="90%" width="90%" /></button>
+        </button>
+      </div>
+
+      <div id="seek-bar">
+        <div id="fill"></div>
+        <div id="handle"></div>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

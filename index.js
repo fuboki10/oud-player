@@ -1,39 +1,27 @@
-var counter = 0;
 let token = `Bearer ${localStorage.getItem("token")}`;
 let player;
 let queue;
 
+let song = new Audio();
+
 axios.defaults.headers.common['authorization'] = token;
 
-const addToQueue = (track) => {
-  const ul = $("#queue").find("#queue-list")[0];
-  const li = document.createElement("li");
-  axios.get(`https://oud-zerobase.me/api/v1/tracks/${track}`)
-    .then(res => {
-      console.log(res);
-      const track = res.data;
-      console.log(track);
-      li.appendChild(document.createTextNode(track.name));
-      ul.appendChild(li);
-      queue.push(track);
-    })
-    .catch(err => console.log(err.response));
+function playOrPauseSong() {
+  if (song.paused) {
+    song.play();
+    $("#play img").attr("src", "Pause.png");
+  } else {
+    song.pause();
+    $("#play img").attr("src", "Play.png");
+  }
+}
+
+function next() {
+  goNext();
 };
 
-const getQueue = () => {
-  axios.get('https://oud-zerobase.me/api/v1/me/queue')
-    .then(res => {
-      console.log(res);
-      const tracks = res.data.tracks;
-      queue = [];
-      const ul = $("#queue").find("#queue-list")[0];
-      console.log(ul);
-      for (let i = 0; i < tracks.length; i++) {
-        addToQueue(tracks[i]);
-      }
-
-    })
-    .catch(err => console.log(err.response));
+function pre() {
+  goPrevious();
 };
 
 const getPlayer = () => {
@@ -43,10 +31,11 @@ const getPlayer = () => {
         player = res.data.player;
         console.log(player);
         if (player.item && player.item.audioUrl) {
-          $("#player")[0].src = player.item.audioUrl;
-          $("#player")[0].load();
-          $("#song-name").html(`${player.item.name}`);
-          $("#song-img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
+          song.src = player.item.audioUrl;
+          console.log($("#songTitle")[0].innerHTML);
+          $("#songTitle")[0].innerHTML = player.item.name;
+          $("#image img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
+          $("#bg img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
         }
       }
     })
@@ -60,10 +49,12 @@ const getCurrentlyPlaying = () => {
         player.item = res.data.track;
         console.log(player);
         if (player.item && player.item.audioUrl) {
-          $("#player")[0].src = player.item.audioUrl;
-          $("#player")[0].load();
-          $("#song-name").html(`${player.item.name}`);
-          $("#song-img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
+          song.src = player.item.audioUrl;
+          song.play();
+          $("#play img").attr("src", "Pause.png");
+          $("#songTitle")[0].innerHTML = player.item.name;
+          $("#image img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
+          $("#bg img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
         }
       }
     })
@@ -86,15 +77,10 @@ const goPrevious = () => {
     .catch(err => console.log(err.response));
 };
 
+
 $(() => {
 
   getPlayer();
-  getQueue();
-
-  $("#play-btn").click(() => $("#player")[0].play());
-  $("#pause-btn").click(() => $("#player")[0].pause());
-
-  $("#next-btn").click(() => goNext());
-  $("#previous-btn").click(() => goPrevious());
-
 });
+
+
