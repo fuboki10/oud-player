@@ -1,0 +1,43 @@
+audio {
+  -webkit-transition:all 0.5s linear;
+  -moz-transition:all 0.5s linear;
+  -o-transition:all 0.5s linear;
+  transition:all 0.5s linear;
+  -moz-box-shadow: 2px 2px 4px 0px #006773;
+  -webkit-box-shadow:  2px 2px 4px 0px #006773;
+  box-shadow: 2px 2px 4px 0px #006773;
+  -moz-border-radius:7px 7px 7px 7px ;
+  -webkit-border-radius:7px 7px 7px 7px ;
+  border-radius:7px 7px 7px 7px ;
+  width: 100%;
+  height: 60px;
+  margin-left: 30%;
+  bottom: 0; 
+  position: fixed; 
+  right: 0; 
+}
+
+#song-name {
+  text-align: center;
+  scale: 2;
+}
+
+#song-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+.btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#queue {
+  margin-top: 0;
+  left: 0;
+  top: 0;
+  position: fixed;
+}
