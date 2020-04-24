@@ -24,4 +24,10 @@ $(() => {
   $("#login-btn").click(() => {
     login();
   });
+
+  $(document).on('keypress', function (e) {
+    if (e.which == 13) {
+      login();
+    }
+  });
 });
