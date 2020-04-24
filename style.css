@@ -26,7 +26,7 @@ body{
   z-index: 99;
 }
 #main{
-  width: 25%;
+  width: 500px;
   background-color:#fff;
   border-radius: 15px;
   position: absolute;
