@@ -6,7 +6,8 @@ let song = new Audio();
 
 axios.defaults.headers.common['authorization'] = token;
 
-function goLogin() {
+function goLogin(err) {
+  if (err) console.log(err);
   localStorage.setItem("token", "");
   location.href = 'login.html';
 }
@@ -57,12 +58,17 @@ const getPlayer = () => {
         if (player.item && player.item.audioUrl) {
           song.src = player.item.audioUrl;
           $("#songTitle")[0].innerHTML = player.item.name;
-          $("#image img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
-          $("#bg img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
+          if (player.item.type === 'track') {
+            $("#image img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
+            $("#bg img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
+          } else {
+            $("#image img").attr("src", `${player.item.image}`);
+            $("#bg img").attr("src", `${player.item.image}`);
+          }
         }
       }
     })
-    .catch(err => goLogin());
+    .catch(err => goLogin(err));
 };
 
 const getCurrentlyPlaying = () => {
@@ -75,12 +81,17 @@ const getCurrentlyPlaying = () => {
           song.play();
           $("#play img").attr("src", "Pause.png");
           $("#songTitle")[0].innerHTML = player.item.name;
-          $("#image img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
-          $("#bg img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
+          if (player.item.type === 'track') {
+            $("#image img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
+            $("#bg img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
+          } else {
+            $("#image img").attr("src", `${player.item.image}`);
+            $("#bg img").attr("src", `${player.item.image}`);
+          }
         }
       }
     })
-    .catch(err => goLogin());
+    .catch(err => goLogin(err));
 };
 
 const goNext = () => {
@@ -88,7 +99,7 @@ const goNext = () => {
     .then(res => {
       getCurrentlyPlaying();
     })
-    .catch(err => goLogin());
+    .catch(err => goLogin(err));
 };
 
 const goPrevious = () => {
@@ -96,7 +107,7 @@ const goPrevious = () => {
     .then(res => {
       getCurrentlyPlaying();
     })
-    .catch(err => goLogin());
+    .catch(err => goLogin(err));
 };
 
 
