@@ -69,7 +69,7 @@ body{
   width: 50px;
   height: 50px;
   border: 0;
-  background-color:royalblue;
+  background-color:black;
   border-radius: 50%;
   outline: none;
   cursor: pointer;
@@ -105,13 +105,13 @@ body{
 }
 #fill{
   height: 5px;
-  background-color:royalblue;
+  background-color:black;
   border-radius: 20px;
 }
 #handle{
   width: 8px;
   height: 8px;
-  background-color:royalblue;
+  background-color:black;
   border-radius: 50%;
   margin-left: -5%;
   transform: scale(2);
