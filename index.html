@@ -42,7 +42,33 @@
 
     <input id="logout-btn" class="btn" type="button" name="Logout" value="Logout">
   </div>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-messaging.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC3_QN2ln-4TqroUE92VzBbKR3Tc0VEILU",
+    authDomain: "hmmmnot-44503.firebaseapp.com",
+    databaseURL: "https://hmmmnot-44503.firebaseio.com",
+    projectId: "hmmmnot-44503",
+    storageBucket: "hmmmnot-44503.appspot.com",
+    messagingSenderId: "981303123877",
+    appId: "1:981303123877:web:a217e6d72a45800461124c",
+    measurementId: "G-QS9HP3SSRY"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  const messaging = firebase.messaging();
+  messaging.usePublicVapidKey("BAH6xzpRjFZMmdd70JO11SVs1jKnG5u7wrBjuzVSx6VbiP28WA2KE3yIEgA3t3f97UHi6kGKmNSI-VXUou0-AVY");
+</script>
+<script src="fcm.js"></script>
 </body>
 
 </html>
