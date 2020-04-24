@@ -6,8 +6,8 @@ let song = new Audio();
 
 axios.defaults.headers.common['authorization'] = token;
 
-function goLogin(err) {
-  console.log(err);
+function goLogin() {
+  localStorage.setItem("token", "");
   location.href = 'login.html';
 }
 
@@ -54,17 +54,15 @@ const getPlayer = () => {
     .then(res => {
       if (res.status === 200) {
         player = res.data.player;
-        console.log(player);
         if (player.item && player.item.audioUrl) {
           song.src = player.item.audioUrl;
-          console.log($("#songTitle")[0].innerHTML);
           $("#songTitle")[0].innerHTML = player.item.name;
           $("#image img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
           $("#bg img").attr("src", `https://oud-zerobase.me/api/${player.item.album.image}`);
         }
       }
     })
-    .catch(err => goLogin(err.response));
+    .catch(err => goLogin());
 };
 
 const getCurrentlyPlaying = () => {
@@ -72,7 +70,6 @@ const getCurrentlyPlaying = () => {
     .then(res => {
       if (res.status === 200) {
         player.item = res.data.track;
-        console.log(player);
         if (player.item && player.item.audioUrl) {
           song.src = player.item.audioUrl;
           song.play();
@@ -83,7 +80,7 @@ const getCurrentlyPlaying = () => {
         }
       }
     })
-    .catch(err => goLogin(err.response));
+    .catch(err => goLogin());
 };
 
 const goNext = () => {
@@ -91,7 +88,7 @@ const goNext = () => {
     .then(res => {
       getCurrentlyPlaying();
     })
-    .catch(err => goLogin(err.response));
+    .catch(err => goLogin());
 };
 
 const goPrevious = () => {
@@ -99,13 +96,15 @@ const goPrevious = () => {
     .then(res => {
       getCurrentlyPlaying();
     })
-    .catch(err => goLogin(err.response));
+    .catch(err => goLogin());
 };
 
 
 $(() => {
-
   getPlayer();
+
+  // logout
+  $("#logout-btn").click(() => goLogin())
 });
 
 

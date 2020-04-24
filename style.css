@@ -129,3 +129,26 @@ body{
   position: fixed;
 }
 
+.btn{
+  margin-left: 40%;
+  margin-top: 10%;
+  position: fixed;
+  border: none;
+  background: #404040;
+  color: #ffffff;
+  font-weight: 80;
+  padding: 20px;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+}
+
+.btn:hover{
+  color: gold;
+  font-weight: 700;
+  letter-spacing: 3px;
+  background: white;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.3s ease 0s;
+}

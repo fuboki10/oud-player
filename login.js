@@ -21,7 +21,6 @@ const login = () => {
 };
 
 $(() => {
-  console.log('aaa');
   $("#login-btn").click(() => {
     login();
   });
