@@ -100,7 +100,7 @@ body{
   background-color:gray;
   display: flex;
   border-radius: 50px;
-  margin-left: 25px;
+  margin-left: 20%;
   cursor: pointer;
 }
 #fill{
@@ -113,7 +113,7 @@ body{
   height: 8px;
   background-color:royalblue;
   border-radius: 50%;
-  margin-left: -5px;
+  margin-left: -5%;
   transform: scale(2);
 }
 
@@ -124,7 +124,8 @@ body{
 }
 
 #total-duration{
-  margin-left: 75%;
+  margin-left: 60%;
   margin-top: -2%;
   position: fixed;
 }
+

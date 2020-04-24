@@ -6,6 +6,11 @@ let song = new Audio();
 
 axios.defaults.headers.common['authorization'] = token;
 
+function goLogin(err) {
+  console.log(err);
+  location.href = 'login.html';
+}
+
 function playOrPauseSong() {
   if (song.paused) {
     song.play();
@@ -59,7 +64,7 @@ const getPlayer = () => {
         }
       }
     })
-    .catch(err => console.log(err.response));
+    .catch(err => goLogin(err.response));
 };
 
 const getCurrentlyPlaying = () => {
@@ -78,7 +83,7 @@ const getCurrentlyPlaying = () => {
         }
       }
     })
-    .catch(err => console.log(err.response));
+    .catch(err => goLogin(err.response));
 };
 
 const goNext = () => {
@@ -86,7 +91,7 @@ const goNext = () => {
     .then(res => {
       getCurrentlyPlaying();
     })
-    .catch(err => console.log(err.response));
+    .catch(err => goLogin(err.response));
 };
 
 const goPrevious = () => {
@@ -94,7 +99,7 @@ const goPrevious = () => {
     .then(res => {
       getCurrentlyPlaying();
     })
-    .catch(err => console.log(err.response));
+    .catch(err => goLogin(err.response));
 };
 
 
